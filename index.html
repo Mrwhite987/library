@@ -52,10 +52,34 @@
       <div class="books container">
         <div class="books-header">
           <h1>Books</h1>
-          <button>+ Add new book</button>
+          <button id="open-dialog-button">+ Add new book</button>
         </div>
         <div class="book-shelf"></div>
       </div>
     </div>
+    <dialog id="add-book">
+      <h2>Add New book</h2>
+      <form method="dialog" id="new-book-form">
+        <label for="title">Book title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="author">Book author:</label>
+        <input type="text" id="author" name="author" required />
+        <label for="pages">Total pages</label>
+        <input type="text" id="pages" name="pages" required />
+        <p>Read status:</p>
+        <div>
+          <input type="radio" id="read" name="read-status" value="read" />
+          <label for="read">Read</label>
+        </div>
+        <div>
+          <input type="radio" id="unread" name="read-status" value="unread" />
+          <label for="unread">Unread</label>
+        </div>
+        <menu>
+          <button type="submit">Add book</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
   </body>
 </html>
