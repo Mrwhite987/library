@@ -11,10 +11,11 @@ function Book(title, author, pages, read = false) {
   this.read = read;
   this.uuid = crypto.randomUUID();
   this.info = function () {
+    let readStatus = "";
     if (read) {
-      let readStatus = "not read yet";
+      readStatus = "not read yet";
     } else {
-      let readStatus = "have read";
+      readStatus = "have read";
     }
     const info = `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
     return info;
@@ -51,50 +52,63 @@ function createBookCard(book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
 
+  const bookCover = document.createElement("div");
+  bookCover.classList.add("book-cover");
+
+  const bookInfo = document.createElement("div");
+  bookInfo.classList.add("book-info");
+
   const bookTitle = document.createElement("h2");
   bookTitle.textContent = book.title;
 
   const bookAuthor = document.createElement("p");
-  bookAuthor.textContent = book.author;
+  bookAuthor.textContent = `by ${book.author}`;
 
   const bookPages = document.createElement("p");
   bookPages.textContent = `${book.pages} pages`;
 
   // Read status text
   const bookStatus = document.createElement("p");
-  bookStatus.textContent = book.read
-    ? "Status: Read ✅"
-    : "Status: Not Read ❌";
+  bookStatus.textContent = book.read ? "Status: Read ✅" : "Status: Unread ❌";
 
-  // Checkbox
+  //Form
+  const readCheckForm = document.createElement("form");
+
+  const checkboxId = `mark-as-read-${book.uuid}`;
+
   const readLabel = document.createElement("label");
   readLabel.textContent = "Mark as read: ";
+  readLabel.setAttribute("for", checkboxId);
 
   const readCheckbox = document.createElement("input");
   readCheckbox.type = "checkbox";
   readCheckbox.checked = book.read;
+  readCheckbox.id = checkboxId;
 
   // Toggle logic
   readCheckbox.addEventListener("change", () => {
     book.toggleReadStatus(); // update book object
     bookStatus.textContent = book.read
       ? "Status: Read ✅"
-      : "Status: Not Read ❌"; // update text in UI
+      : "Status: Unread ❌"; // update text in UI
   });
+
+  readCheckForm.append(readLabel, readCheckbox);
 
   const bookRemoveBtn = document.createElement("button");
   bookRemoveBtn.textContent = "Remove";
   bookRemoveBtn.className = "remove-book";
   bookRemoveBtn.id = book.uuid;
-  bookCard.append(
+
+  bookInfo.append(
     bookTitle,
     bookAuthor,
     bookPages,
     bookStatus,
-    readLabel,
-    readCheckbox,
+    readCheckForm,
     bookRemoveBtn
   );
+  bookCard.append(bookCover, bookInfo);
   return bookCard;
 }
 
