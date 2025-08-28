@@ -61,28 +61,52 @@
       </div>
     </div>
     <dialog id="add-book">
-      <h2>Add New book</h2>
-      <form method="dialog" id="new-book-form">
-        <label for="title">Book title:</label>
-        <input type="text" id="title" name="title" required />
-        <label for="author">Book author:</label>
-        <input type="text" id="author" name="author" required />
-        <label for="pages">Total pages</label>
-        <input type="text" id="pages" name="pages" required />
-        <p>Read status:</p>
-        <div>
-          <input type="radio" id="read" name="read-status" value="read" />
-          <label for="read">Read</label>
-        </div>
-        <div>
-          <input type="radio" id="unread" name="read-status" value="unread" />
-          <label for="unread">Unread</label>
-        </div>
-        <menu>
-          <button type="submit">Add book</button>
-          <button type="button" id="cancel-btn">Cancel</button>
-        </menu>
-      </form>
+      <div class="dialog-container">
+        <h2>Add New book</h2>
+        <form method="dialog" id="new-book-form">
+          <div class="book-info-container">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              placeholder="Title..."
+            />
+          </div>
+          <div class="book-info-container">
+            <label for="author">Author</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              required
+              placeholder="Author..."
+            />
+          </div>
+          <div class="book-info-container">
+            <label for="pages">Pages</label>
+            <input
+              type="text"
+              id="pages"
+              name="pages"
+              required
+              placeholder="total pages..."
+            />
+          </div>
+          <p>Read status:</p>
+          <div>
+            <input type="radio" id="read" name="read-status" value="read" />
+            <label for="read">Read</label>
+            <input type="radio" id="unread" name="read-status" value="unread" />
+            <label for="unread">Unread</label>
+          </div>
+          <menu>
+            <button type="submit">Add book</button>
+            <button type="button" id="cancel-btn">Cancel</button>
+          </menu>
+        </form>
+      </div>
     </dialog>
   </body>
 </html>

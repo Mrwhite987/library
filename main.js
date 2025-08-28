@@ -1,5 +1,4 @@
 let myLibrary = [];
-// let displayedBookUUID = [];
 
 function Book(title, author, pages, read = false) {
   if (!new.target) {
@@ -124,6 +123,10 @@ openAddNewBookDialogBtn.addEventListener("click", () =>
 
 // Cancel closes dialog
 cancelBtn.addEventListener("click", () => addBookDialog.close());
+
+addBookDialog.addEventListener("close", () => {
+  newBookForm.reset(); // Reset the form whenever the dialog is closed
+});
 
 // Handle form submission
 newBookForm.addEventListener("submit", (e) => {

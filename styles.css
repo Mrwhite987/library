@@ -205,3 +205,61 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
+
+/* styles for dialog */
+dialog {
+  margin: auto;
+  border: none;
+  border-radius: 15px;
+  padding: 2rem 3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  background-color: #edede9;
+}
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+dialog h2 {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+dialog input {
+  font-size: 1.3rem;
+}
+
+dialog menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+form div.book-info-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+dialog form div:last-of-type {
+  display: flex;
+  justify-content: space-around;
+}
+
+dialog button {
+  border: none;
+  background-color: #e3d5ca;
+  padding: 5px 30px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
