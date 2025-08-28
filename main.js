@@ -21,6 +21,10 @@ function Book(title, author, pages, read = false) {
   };
 }
 
+Book.prototype.toggleReadStatus = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, read = false) {
   // take params, create a book then store it in the array
   const newBook = new Book(title, author, pages, read);
@@ -46,18 +50,38 @@ function displayBooks(bookArray) {
 function createBookCard(book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
-  const bookTitle = document.createElement("h1");
+
+  const bookTitle = document.createElement("h2");
   bookTitle.textContent = book.title;
+
   const bookAuthor = document.createElement("p");
   bookAuthor.textContent = book.author;
+
   const bookPages = document.createElement("p");
   bookPages.textContent = `${book.pages} pages`;
-  const bookReadStatus = document.createElement("p");
-  if (book.read) {
-    bookReadStatus.textContent = "Read";
-  } else {
-    bookReadStatus.textContent = "Unread";
-  }
+
+  // Read status text
+  const bookStatus = document.createElement("p");
+  bookStatus.textContent = book.read
+    ? "Status: Read ✅"
+    : "Status: Not Read ❌";
+
+  // Checkbox
+  const readLabel = document.createElement("label");
+  readLabel.textContent = "Mark as read: ";
+
+  const readCheckbox = document.createElement("input");
+  readCheckbox.type = "checkbox";
+  readCheckbox.checked = book.read;
+
+  // Toggle logic
+  readCheckbox.addEventListener("change", () => {
+    book.toggleReadStatus(); // update book object
+    bookStatus.textContent = book.read
+      ? "Status: Read ✅"
+      : "Status: Not Read ❌"; // update text in UI
+  });
+
   const bookRemoveBtn = document.createElement("button");
   bookRemoveBtn.textContent = "Remove";
   bookRemoveBtn.className = "remove-book";
@@ -66,7 +90,9 @@ function createBookCard(book) {
     bookTitle,
     bookAuthor,
     bookPages,
-    bookReadStatus,
+    bookStatus,
+    readLabel,
+    readCheckbox,
     bookRemoveBtn
   );
   return bookCard;

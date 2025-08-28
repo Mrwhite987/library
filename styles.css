@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* set up page grid layout */
 .main-container {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
@@ -11,21 +12,147 @@
   grid-template-areas:
     "sidebar admin"
     "sidebar books";
+  padding: 20px 20px;
+  gap: 20px;
 }
 
 .sidebar {
   grid-area: sidebar;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 95vh;
+  background-color: #edede9;
+  border-radius: 15px;
+  box-shadow: 5px 10px 15px rgb(218, 216, 216);
 }
 
 .admin {
   grid-area: admin;
+  background-color: hsla(0, 7%, 97%, 0.84);
+  border-radius: 15px;
 }
 
 .books {
   grid-area: books;
+  background-color: #efefef;
+  border-radius: 15px;
+  box-shadow: 5px 10px 15px rgb(218, 216, 216);
 }
 
-.container {
-  background-color: aliceblue;
-  border: 2px solid black;
+/* styles for sidebar */
+
+/* styles for sidebar logo div */
+
+.sidebar > .logo {
+  display: flex;
+  gap: 10px;
+  font-family: Roboto, sans-serif;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.logo > h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+/* styles for sidebar my-library and genres div */
+.sidebar > .my-library,
+.sidebar > .genres {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sidebar li {
+  list-style: none;
+}
+
+.sidebar h2 {
+  font-size: x-large;
+  font-weight: 500;
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.sidebar ul {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-betweens;
+  padding-left: 45px;
+}
+
+/* styles for header (admin) */
+.admin {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 50px;
+  gap: clamp(30px, 80px, 100px);
+  box-shadow: 10px 10px 15px rgb(218, 216, 216);
+}
+
+.admin > button {
+  font-size: 20px;
+  padding: 10px 40px;
+  border: 0px;
+  border-radius: 25px;
+  background-color: #e3d5ca;
+  font-size: 18px;
+}
+
+.admin button + div {
+  background-color: #e3d5ca;
+  border-radius: 50%;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* styles for books-header div */
+.books-header {
+  display: flex;
+  padding: 20px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.books-header button {
+  padding: 5px 20px;
+  font-size: 18px;
+  background-color: #e3d5ca;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.books-header button span {
+  font-weight: bolder;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* styles for book-card */
+
+.book-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 10px 30px;
+}
+
+.book-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px 40px;
+  box-shadow: 5px 5px 10px rgb(191, 189, 189);
+  
 }
